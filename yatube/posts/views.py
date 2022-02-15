@@ -6,7 +6,7 @@ from posts.models import Group, Post
 def index(request):
     template = 'posts/index.html'
     title = 'Последние обновления на сайте'
-    posts = Post.objects.order_by('-pub_date')[:10]
+    posts = Post.objects.all()[:10]
     context = {
         'posts': posts,
         'title': title,
@@ -18,7 +18,7 @@ def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
     template = 'posts/group_list.html'
     title = f'Записи сообщества {slug}'
-    posts = group.group_name.all().order_by('-pub_date')[:10]
+    posts = group.group_name.all()[:10]
     context = {
         'group': group,
         'posts': posts,
