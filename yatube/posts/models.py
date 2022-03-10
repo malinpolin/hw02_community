@@ -23,6 +23,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
+        #в модели User создается свойство posts, которое ссылается на все записи автора
         related_name='posts',
         verbose_name='Автор',
     )
